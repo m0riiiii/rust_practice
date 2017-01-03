@@ -19,6 +19,13 @@ fn main() {
     println!("{}",x);
 
     // 参照(&T) ミュータブルな参照（&mut T）
+
+    let mut x = vec![1,2,3];
+    let y = vec![1,2,3,4];
+
+    setter(&mut x,y);
+
+    println!("{:?}", x);
 }
 
 fn foo(v1: &Vec<i32>, v2: &Vec<i32>) -> i32 {
@@ -28,4 +35,8 @@ fn foo(v1: &Vec<i32>, v2: &Vec<i32>) -> i32 {
     println!("in function v1: {:?}, v2: {:?}",v1,v2);
 
     42
+}
+
+fn setter(x: &mut Vec<i32>, y: Vec<i32>) {
+    *x = y;
 }
