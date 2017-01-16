@@ -1,0 +1,7 @@
+[package]
+name = "cat"
+version = "0.1.0"
+authors = ["m0riiiii <rewop.ecnalab.x2@gmail.com>"]
+
+[dependencies]
+getopts = "0.2.14"
