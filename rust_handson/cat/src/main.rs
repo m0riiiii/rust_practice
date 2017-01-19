@@ -16,7 +16,6 @@ fn read_file(filename: String) -> Result<String, io::Error> {
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    let program = args[0].clone();
 
     let mut opts = Options::new();
     opts.optflag("n","number","print line number");
@@ -31,16 +30,23 @@ fn main() {
         return;
     };
 
-    println!("{:?}", args);
-
     if args.len() > 1 {
+        let mut count = 0;
         for file in &args[1..] {
+            if &file[0..1] == "-" {
+                continue;
+            }
             println!("{}", match read_file(file.clone()) {
                 Ok(concat) => concat.lines()
                                     .enumerate()
-                                    .map(|(num, line)| format!("{}: {}",(num + 1),line))
+                                    .map(|(_,line)| if matches.opt_present("n") {
+                                            count += 1;
+                                            format!("{}: {}",(count),line)
+                                        } else { 
+                                            format!("{}", line)
+                                            })
                                     .fold(String::new(), |result, line| format!("{}\n{}",result,line)),
-                Err(reason) => format!("{} is not exist", file),
+                Err(_) => format!("{} is not exist", file),
             });
         }
     }
