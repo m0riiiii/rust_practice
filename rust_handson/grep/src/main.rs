@@ -10,6 +10,7 @@ fn main() {
         let mut concat = String::new();
 
         file.read_to_string(&mut concat);
+        if concat.
         println!("{:?}", concat);
     }
 }
