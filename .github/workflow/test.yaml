@@ -1,0 +1,9 @@
+name: test
+
+on: push
+jobs:
+  test:
+    steps:
+      - uses: actions/checkout@v2
+      - name: echo
+        run: echo test
