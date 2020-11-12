@@ -1,0 +1,12 @@
+name: Cron By GUI
+
+on:
+  schedule:
+    - cron: '1/5 * * * *'
+      
+jobs:
+  ScheduleTest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo
+        run: echo Hello
