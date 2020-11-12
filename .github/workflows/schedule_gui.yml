@@ -1,4 +1,4 @@
-name: Cron By GUI
+name: CronByGUI
 
 on:
   schedule:
